@@ -2,44 +2,21 @@ let baza = [
 
 ]
 
-const root = document.getElementById('root');
-const divActive = document.createElement("div");
-const divNotActive = document.createElement("div");
-const inputTask = document.createElement("input");
-const inputDate = document.createElement("input");
-const submit = document.createElement("button")
-const headingForActive = document.createElement("h2");
-const headingForDone = document.createElement("h2");
-const containerActive = document.createElement("div");
-const containerDone = document.createElement("div");
-headingForActive.innerHTML = "Tasks Active:"
-headingForDone.innerHTML = "Tasks Done:"
-inputTask.setAttribute("type", "text")
-inputDate.setAttribute("type", "date")
-divActive.className = "divactive";
-divNotActive.className = "divnotactive"
-submit.innerHTML = "Dodaj"
-containerActive.className = "containerActive"
-containerDone.className = "containerDone"
-submit.addEventListener("click", () => { handleAddTask(inputTask.value, inputDate.value) })
-divActive.appendChild(headingForActive);
-divNotActive.appendChild(headingForDone);
-root.appendChild(inputTask);
-root.appendChild(inputDate);
-root.appendChild(submit)
-root.appendChild(divActive);
-root.appendChild(divNotActive);
-divActive.appendChild(containerActive)
-divNotActive.appendChild(containerDone)
-
-const getDate = () => {
+const getDate = (liczba) => {
     let date = new Date()
     let day = date.getDate();
     let month = date.getMonth();
     let year = date.getFullYear();
-    let fullDate = [day < 10 ? "0" + day : day] + "." + [month + 1] + "." + year;
-    return fullDate;
+    if (liczba == 2) {
+        let fullDate = [day < 10 ? "0" + day : day] + "." + [month + 1] + "." + year;
+        return fullDate;
+    }
+    else if (liczba == 1) {
+        let fullDate = year + "-" + [month + 1] + "-" + [day < 10 ? "0" + day : day];
+        return fullDate;
+    }
 }
+inputDate.value = getDate(1);
 const handleAddTask = (taskText, taskDate) => {
     if (taskText != "" && taskDate != null) {
         handleClear();
@@ -57,8 +34,7 @@ const handleRemoveTask = (id) => {
 const handleTaskDone = (id) => {
     handleClear();
 
-    let date = getDate();
-    console.log(date);
+    let date = getDate(2);
     const newdb = baza.map(element => {
 
         if (id == element || element.isActive == false) {
@@ -93,13 +69,13 @@ const handleCreate = () => {
 
         p.classList.add((elemDB.isActive) ? "active" : "notactive");
         if (elemDB.isActive == true) {
-            p.innerHTML = elemDB.tekst + "</i> | <b> Czas do: " + elemDB.data + "</b>";
+            p.innerHTML = elemDB.tekst + "</i> | <b> Ends on: " + elemDB.data + "</b>";
             p.appendChild(button)
             p.appendChild(button2)
             containerActive.appendChild(p);
         }
         else {
-            p.innerHTML = elemDB.tekst + " <b>Zakończone:</b>" + elemDB.data;
+            p.innerHTML = elemDB.tekst + " | <b>Done: " + elemDB.data + " </b> ";
             p.appendChild(button)
             containerDone.appendChild(p);
         }

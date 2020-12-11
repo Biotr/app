@@ -44,7 +44,7 @@ p{
     margin-top: 60px;
 }
 .containerActive,.containerDone{
-    overflow-y:scroll;
+    overflow-y:auto;
     height: 300px;
     border:1px solid rgb(255, 255, 255);
     border-radius: 1px;
@@ -52,25 +52,6 @@ p{
     margin:auto;
     border-radius: 50px;
 }
-/* width */
-.containerActive::-webkit-scrollbar {
-    width: 10px;
-    
-  }
-  
-  /* Track */
-  .containerActive::-webkit-scrollbar-track {
-    background:rgb(44, 44, 44);
-    height: 250px;
-    margin-right: 20px;
-  }
-  
-  /* Handle */
-  .containerActive::-webkit-scrollbar-thumb {
-    background: rgb(255, 255, 255);
-  }
-  
-  /* Handle on hover */
-  .containerActive::-webkit-scrollbar-thumb:hover {
-    background: rgb(255, 255, 255);
-  }
+b{
+    color: red;
+}
