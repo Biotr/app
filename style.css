@@ -50,8 +50,11 @@ p{
     border-radius: 1px;
     width: 45%;
     margin:auto;
-    border-radius: 50px;
+    border-radius: 5px;
 }
 b{
     color: red;
+}
+button{
+    padding: 5px;
 }

@@ -14,7 +14,7 @@ inputTask.setAttribute("type", "text")
 inputDate.setAttribute("type", "date")
 divActive.className = "divactive";
 divNotActive.className = "divnotactive"
-submit.innerHTML = "Dodaj"
+submit.innerHTML = "Add"
 containerActive.className = "containerActive"
 containerDone.className = "containerDone"
 submit.addEventListener("click", () => { handleAddTask(inputTask.value, inputDate.value) })

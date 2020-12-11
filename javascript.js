@@ -2,16 +2,16 @@ let baza = [
 
 ]
 
-const getDate = (liczba) => {
+const getDate = (typeOfDate) => {
     let date = new Date()
     let day = date.getDate();
     let month = date.getMonth();
     let year = date.getFullYear();
-    if (liczba == 2) {
+    if (typeOfDate == 2) {
         let fullDate = [day < 10 ? "0" + day : day] + "." + [month + 1] + "." + year;
         return fullDate;
     }
-    else if (liczba == 1) {
+    else if (typeOfDate == 1) {
         let fullDate = year + "-" + [month + 1] + "-" + [day < 10 ? "0" + day : day];
         return fullDate;
     }
@@ -62,7 +62,7 @@ const handleCreate = () => {
         const button = document.createElement("BUTTON")
         const button2 = document.createElement("BUTTON")
 
-        button2.innerHTML = "zrobione";
+        button2.innerHTML = "Done";
         button.innerHTML = "X";
         button.addEventListener('click', () => { handleRemoveTask(baza.indexOf(elemDB)) })
         button2.addEventListener('click', () => { handleTaskDone(elemDB) })
@@ -83,8 +83,8 @@ const handleCreate = () => {
     })
 }
 const handleClear = () => {
-    let element = document.getElementsByTagName("p"), index;
-    for (index = element.length - 1; index >= 0; index--) {
+    let element = document.getElementsByTagName("p");
+    for (let index = element.length - 1; index >= 0; index--) {
         element[index].parentNode.removeChild(element[index]);
     }
 
